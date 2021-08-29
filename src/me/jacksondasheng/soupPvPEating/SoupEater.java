@@ -10,14 +10,16 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class SoupEater implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        Player player = event.getPlayer();
         Action action = event.getAction();
+        Player player = event.getPlayer();
+        double health = player.getHealth(),
+        maxHealth = player.getMaxHealth();
 
-        if(player.getItemInHand().getType() == Material.MUSHROOM_SOUP && (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK)) {
+        if(player.getItemInHand().getType() == Material.MUSHROOM_SOUP && health < maxHealth && (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK)) {
             try {
-                player.setHealth(player.getHealth() + 7);
+                player.setHealth(health + 7);
             } catch(IllegalArgumentException exc) {
-                player.setHealth(player.getHealthScale());
+                player.setHealth(maxHealth);
             }
 
             player.getItemInHand().setType(Material.BOWL);
