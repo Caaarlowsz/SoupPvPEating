@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SoupPvPEating:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SoupPvPEating</output-path>
+    <root id="archive" name="SoupPvPEating.jar">
+      <element id="module-output" name="SoupPvPEating" />
+    </root>
+  </artifact>
+</component>
